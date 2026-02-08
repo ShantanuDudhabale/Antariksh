@@ -1,4 +1,3 @@
-'use client';
 import React, { useState, useEffect } from 'react';
 import '../styles/Navbar.css';
 import logoImg from '../assets/images/image.png';

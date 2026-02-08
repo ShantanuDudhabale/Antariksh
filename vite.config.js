@@ -7,10 +7,6 @@ export default defineConfig({
     rollupOptions: {},
     minify: 'esbuild',
     sourcemap: false,
-    cssCodeSplit: true,
     reportCompressedSize: false
-  },
-  ssr: {
-    external: ['react', 'react-dom']
   }
 })

@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
 import TimelineCard from './TimelineCard';
 import '../styles/TimelineSection.css';
