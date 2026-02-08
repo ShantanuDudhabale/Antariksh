@@ -2,8 +2,11 @@
   "buildCommand": "npm ci && npm run build",
   "devCommand": "npm run dev",
   "framework": null,
-  "installCommand": "npm ci",
+  "installCommand": "npm ci --prefer-offline --no-audit",
   "nodeVersion": "20.x",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "env": {
     "NODE_ENV": "production"
   },
