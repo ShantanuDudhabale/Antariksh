@@ -1,0 +1,174 @@
+/* Realistic Planets - Canvas-Based Premium Design */
+.realistic-planets-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  perspective: 2000px;
+}
+
+.planet-canvas {
+  position: absolute;
+  opacity: 0.45;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.25)) brightness(1.1);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-origin: center center;
+}
+
+/* Individual planet animations with vertical axis rotation */
+.planet-jupiter {
+  animation: rotateVertical 35s linear infinite, floatMotion 8s ease-in-out infinite;
+}
+
+.planet-saturn {
+  animation: rotateVertical 40s linear infinite, floatMotion 10s ease-in-out infinite 1s;
+}
+
+.planet-mars {
+  animation: rotateVertical 30s linear infinite, floatMotion 7s ease-in-out infinite 2s;
+}
+
+.planet-venus {
+  animation: rotateVertical 38s linear infinite, floatMotion 9s ease-in-out infinite 1.5s;
+}
+
+.planet-mercury {
+  animation: rotateVertical 25s linear infinite, floatMotion 6s ease-in-out infinite 0.5s;
+}
+
+.planet-earth {
+  animation: rotateVertical 32s linear infinite, floatMotion 8.5s ease-in-out infinite 2.5s;
+}
+
+/* Main vertical axis rotation */
+@keyframes rotateVertical {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Subtle floating motion for realism */
+@keyframes floatMotion {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  25% {
+    transform: translateY(-15px) translateX(8px);
+  }
+
+  50% {
+    transform: translateY(0) translateX(12px);
+  }
+
+  75% {
+    transform: translateY(12px) translateX(8px);
+  }
+}
+
+/* Enhanced Hover effects */
+.planet-canvas:hover {
+  opacity: 0.6;
+  filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.4)) brightness(1.25);
+  transform: scale(1.1);
+}
+
+/* Responsive Planet Sizing */
+@media (max-width: 1400px) {
+  .planet-canvas {
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 1024px) {
+  .planet-canvas {
+    transform: scale(0.85);
+    opacity: 0.35;
+  }
+
+  .planet-canvas:hover {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .planet-canvas {
+    transform: scale(0.7);
+    opacity: 0.3;
+  }
+
+  .planet-canvas:hover {
+    opacity: 0.42;
+  }
+
+  .planet-jupiter,
+  .planet-saturn,
+  .planet-mars,
+  .planet-venus,
+  .planet-mercury,
+  .planet-earth {
+    animation-duration: 50s;
+  }
+}
+
+@media (max-width: 480px) {
+  .planet-canvas {
+    transform: scale(0.55);
+    opacity: 0.25;
+  }
+
+  .planet-canvas:hover {
+    opacity: 0.35;
+  }
+}
+  .planet-canvas:hover {
+    opacity: 0.2;
+  }
+}
+
+/* Performance optimizations */
+.planet-canvas {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.realistic-planets-container {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .planet-canvas {
+    will-change: transform, opacity;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .planet-canvas,
+  .planet-jupiter,
+  .planet-saturn,
+  .planet-mars,
+  .planet-venus,
+  .planet-mercury,
+  .planet-earth {
+    animation: none !important;
+  }
+}

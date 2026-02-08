@@ -1,0 +1,246 @@
+.discovery-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(26, 21, 71, 0.5), rgba(20, 10, 50, 0.5));
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideInCard 0.8s ease var(--stagger-delay) forwards;
+  cursor: pointer;
+}
+
+.discovery-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slideInCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.discovery-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.3), transparent);
+}
+
+.card-blur-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(138, 43, 226, 0.1),
+    transparent
+  );
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.discovery-card:hover {
+  background: linear-gradient(135deg, rgba(26, 21, 71, 0.8), rgba(20, 10, 50, 0.8));
+  border-color: rgba(138, 43, 226, 0.5);
+  transform: translateY(-15px);
+  box-shadow: 
+    0 20px 60px rgba(124, 58, 237, 0.15),
+    0 0 30px rgba(138, 43, 226, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(
+    circle,
+    rgba(138, 43, 226, 0.3),
+    rgba(138, 43, 226, 0.1)
+  );
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+.card-icon {
+  font-size: 32px;
+  display: block;
+}
+
+.card-accent {
+  width: 4px;
+  height: 30px;
+  border-radius: 2px;
+  background: var(--card-color);
+  box-shadow: 0 0 15px var(--card-color);
+}
+
+.card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.card-main-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+  color: #e0e0ff;
+  transition: color 0.3s ease;
+}
+
+.discovery-card:hover .card-main-title {
+  color: var(--card-color);
+}
+
+.card-subtitle {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--card-color);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 15px 0;
+  font-weight: 600;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: rgba(224, 224, 255, 0.75);
+  line-height: 1.7;
+  margin: 15px 0 20px 0;
+}
+
+.card-details {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.detail-badge {
+  display: inline-block;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: rgba(224, 224, 255, 0.8);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.discovery-card:hover .detail-badge {
+  background: rgba(124, 58, 237, 0.25);
+  border-color: rgba(124, 58, 237, 0.5);
+  color: #e0e0ff;
+}
+
+.card-expand-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.discovery-card:hover .card-expand-content {
+  max-height: 100px;
+}
+
+.explore-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--card-color), rgba(138, 43, 226, 0.6));
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.explore-btn:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.explore-btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+.card-glow {
+  position: absolute;
+  inset: -50px;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(50px);
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.discovery-card:hover .card-glow {
+  opacity: 0.15;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .discovery-card {
+    padding: 25px;
+  }
+
+  .card-icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .card-icon {
+    font-size: 28px;
+  }
+
+  .card-main-title {
+    font-size: 20px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+  }
+}

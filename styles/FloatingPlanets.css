@@ -1,0 +1,156 @@
+.floating-planets-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.planet-item {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.planet-item:hover {
+  filter: brightness(1.2);
+}
+
+.planet-item:hover .planet-info-label {
+  opacity: 1;
+  transform: translateY(-80px) scale(1);
+}
+
+.planet-holder {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet-canvas {
+  display: block;
+  animation: rotatePlanetAxis 25s linear infinite;
+}
+
+.planet-jupiter {
+  animation: rotatePlanetAxis 28s linear infinite;
+}
+
+.planet-saturn {
+  animation: rotatePlanetAxis 32s linear infinite;
+}
+
+.planet-mars {
+  animation: rotatePlanetAxis 24s linear infinite;
+}
+
+.planet-venus {
+  animation: rotatePlanetAxis 26s linear infinite;
+}
+
+.planet-mercury {
+  animation: rotatePlanetAxis 20s linear infinite;
+}
+
+/* 3D rotation on vertical axis */
+@keyframes rotatePlanetAxis {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.planet-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+.planet-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(65deg) rotateZ(45deg);
+  border: 8px solid;
+  border-color: var(--ring-color);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: spinRings 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spinRings {
+  0% {
+    transform: translate(-50%, -50%) rotateX(65deg) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(65deg) rotateZ(360deg);
+  }
+}
+
+.planet-info-label {
+  position: absolute;
+  top: -60px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-60px) scale(0.8);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .planet-item {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  .planet-item {
+    transform: scale(0.6);
+  }
+}
+
+@media (max-width: 480px) {
+  .planet-item {
+    transform: scale(0.4);
+  }
+}
+
+/* 3D perspective for better planet effect */
+.floating-planets-container {
+  perspective: 1000px;
+}
+
+.planet-holder {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.planet-canvas {
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+}
+
+/* Enhance planet detail visibility */
+.planet-item:hover .planet-canvas {
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.2)) brightness(1.15);
+}
