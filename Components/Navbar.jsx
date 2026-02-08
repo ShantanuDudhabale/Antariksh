@@ -61,6 +61,8 @@ function Navbar() {
           <div className="logo-symbol"></div>
           <img src={logoImg} alt="Antariksh Logo" />
           <div className="logo-text-group">
+            <div className="logo-text">ANTARIKSH</div>
+            <div className="logo-subtitle">Astronomy Club</div>
           </div>
         </div>
 

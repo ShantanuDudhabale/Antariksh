@@ -135,10 +135,6 @@
     opacity: 0.35;
   }
 }
-  .planet-canvas:hover {
-    opacity: 0.2;
-  }
-}
 
 /* Performance optimizations */
 .planet-canvas {
